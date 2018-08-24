@@ -15,7 +15,7 @@ const userSchema = new Schema({
             },
             admin: {
                 type: Number,
-                required: true
+                default: 0
             },
             fname: {
                 type: String,

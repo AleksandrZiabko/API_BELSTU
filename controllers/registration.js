@@ -23,10 +23,18 @@ class Registration {
             if(!fs.existsSync(dir + `${body.year}/${body.groupe}/${body.podgroupe}/${RegUser.toLatin(body.fname + ' ' + body.sname)}`)) {
                 mkdirp(dir + `${body.year}/${body.groupe}/${body.podgroupe}/${RegUser.toLatin(body.fname + ' ' + body.sname)}`, err => err && console.error(err))
             }
-            res.send(true);
             console.log('USER ADDED!')
+            res.send({
+              status: true,
+              date: new Date()
+            });
+
         })
-            .catch((err) => console.error(err))
+            .catch((err) => res.send({
+              status: false,
+              date: new Date()
+            }))
+
 
     }
 }
